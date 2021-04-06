@@ -3,18 +3,18 @@ myImage.src ='data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAAYEBQYFBAY
 myImage.addEventListener('load', function(){
     const canvas = document.getElementById('canvas1');
     const ctx = canvas.getContext('2d');
-    canvas.width = 700;
+    canvas.width = 500;
     canvas.height = 706;
     
     ctx.drawImage(myImage, 0, 0, canvas.width, canvas.height);
     
     const pixels = ctx.getImageData(0, 0, canvas.width, canvas.height)
-    //ctx.clearRect(0,0, canvas.width,canvas.height);
+    ctx.clearRect(0,0, canvas.width,canvas.height);
     
     
     let particlesArray = [];
     
-    const numberOfParticles = 7000;
+    const numberOfParticles = 5000;
     
     let mappedImage = []; 
     for(let y = 0 ; y < canvas.height; y++){
@@ -27,6 +27,7 @@ myImage.addEventListener('load', function(){
             const brightness = calculateRelativeBrightness(red, green, blue);
             const cell =[
                 cellBrightness = brightness,
+             //   cellColor = 'rgb('+ red + ','+ green + ','+ blue + ')' 
              ];
          row.push(cell);
         }
@@ -64,7 +65,8 @@ myImage.addEventListener('load', function(){
     }
                  draw(){
                      ctx.beginPath();
-                  ctx.fillStyle ='white';
+                     ctx.fillStyle ='white';
+                    // ctx.fillStyle =mappedImage[this.position1][this.position2][1];
                      ctx.arc(this.x,this.y, this.size , 0 , Math.PI * 2 );
                      ctx.fill();
     
