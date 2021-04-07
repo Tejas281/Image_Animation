@@ -13,4 +13,5 @@
   transform: translate(-50%, -50%);
   width: 500px;
   height: 706px;
+  filter: blur(2px) contrast(3);
 }
